@@ -1,0 +1,19 @@
+version: 1
+common:
+  resourcesPath: ./components
+  env:
+    DEBUG: true
+apps:
+  - appID: command-svc
+    appDirPath: ./command-service/
+    appProtocol: http
+    appPort: 8888
+    daprHTTPPort: 3035
+    daprGRPCPort: 3036
+    appLogDestination: fileAndConsole
+    daprdLogDestination: file
+    command: ["go", "run", "."]
+    volumes:
+      - "./certificates:/certificates"
+    environment:
+      

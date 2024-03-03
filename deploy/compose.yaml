@@ -1,0 +1,14 @@
+services:
+  eventstore:
+    container_name: "cosmos-event-store"
+    image: "mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator"
+    mem_limit: "3g"
+    cpus: 4.0
+    ports:
+      - "8081:8081"
+    volumes:
+      - "./certificates:/certificates"
+    environment:
+      - "SSL_CERT_DIR=/certificates"
+      - "AZURE_COSMOS_EMULATOR_PARTITION_COUNT=3"
+      - "AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true"

@@ -1,0 +1,23 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: eventstore
+spec:
+  type: state.azure.cosmosdb
+  version: v1
+  initTimeout: 30s
+  metadata:
+    - name: url
+      value: https://172.30.80.1:8082
+    - name: masterKey
+      value: "[masterKey]"
+    - name: database
+      value: eventsourcing
+    - name: collection
+      value: events
+    - name: azureTenantId
+      value: "[azureTenantId]"
+    - name: azureClientId
+      value: "[azureClientId]"
+    - name: azureCertificateFile
+      value: "/certificates/cosmos.pem"
